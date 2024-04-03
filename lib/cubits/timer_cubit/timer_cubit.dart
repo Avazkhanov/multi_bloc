@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:multi_bloc/cubits/timer_cubit/timer_state.dart';
 
 class TimerCubit extends Cubit<TimerState> {
@@ -8,22 +7,21 @@ class TimerCubit extends Cubit<TimerState> {
 
   TimerCubit() : super(TimerInitial());
 
-  void startTimer(TimeOfDay timeOfDay, String tag) {
-    Duration duration = Duration(hours: timeOfDay.hour, minutes: timeOfDay.minute);
+  void startTimer(int secund, int minute, String title) {
+    Duration duration = Duration(seconds: secund, minutes: minute);
 
     int durationInSeconds = duration.inSeconds;
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (durationInSeconds > 0) {
         durationInSeconds -= 1;
         duration = Duration(seconds: durationInSeconds);
-        emit(TimerRunning(duration, tag));
+        emit(TimerRunning(duration, title));
       } else {
         _timer.cancel();
         emit(TimerStopState());
       }
     });
   }
-
 
   @override
   Future<void> close() {

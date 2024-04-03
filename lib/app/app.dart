@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:multi_bloc/cubits/timer_cubit/timer_cubit.dart';
 import 'package:multi_bloc/cubits/transfer_cubit/transfer_cubit.dart';
 import 'package:multi_bloc/data/repositories/transfers_repository.dart';
-import 'package:multi_bloc/screens/monitoring/monitoring_screen.dart';
+import 'package:multi_bloc/screens/home_screen/home_screen.dart';
+
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const MonitoringScreen(),
+      child: const HomeScreen(),
     );
   }
 }
